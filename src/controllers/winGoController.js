@@ -547,11 +547,12 @@ const addWinGo = async (game) => {
             ];
 
             const totalMoneyPromises = betColumns.map(async column => {
-                const [result] = await connection.query(`
-                SELECT SUM(money) AS total_money
-                FROM minutes_1
-                WHERE game = "${join}" AND status = 0 AND bet IN (${column.bets.map(bet => `"${bet}"`).join(',')})
-            `);
+                const [result] = await connection.query(
+                    `SELECT SUM(money) AS total_money
+                     FROM minutes_1
+                     WHERE game = ? AND status = 0 AND bet IN (${column.bets.map(() => '?').join(',')})`,
+                    [join, ...column.bets]
+                );
                 return { name: column.name, total_money: result[0].total_money ? parseInt(result[0].total_money) : 0 };
             });
 
@@ -597,11 +598,12 @@ const addWinGo = async (game) => {
             ];
 
             const categories = await Promise.all(betColumns.map(async column => {
-                const [result] = await connection.query(`
-                    SELECT SUM(money) AS total_money
-                    FROM minutes_1
-                    WHERE game = "${join}" AND status = 0 AND bet IN (${column.bets.map(bet => `"${bet}"`).join(',')})
-                `);
+                const [result] = await connection.query(
+                    `SELECT SUM(money) AS total_money
+                     FROM minutes_1
+                     WHERE game = ? AND status = 0 AND bet IN (?)`,
+                    [join, column.bets]
+                );
                 return { name: column.name, total_money: parseInt(result[0]?.total_money) || 0 };
             }));
 
