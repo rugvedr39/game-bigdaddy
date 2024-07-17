@@ -655,7 +655,8 @@ const addWinGo = async (game) => {
                 newArr = newArr.slice(0, -1);
             }
             result = arr[0];
-            await connection.execute(`UPDATE wingo SET amount = ?,status = ? WHERE period = ? AND game = "${join}"`, [result, 1, period]);
+            await connection.execute(`UPDATE wingo SET amount = ?, status = ? WHERE period = ? AND game = ?`, [result, 1, period, join]);
+
         }
         const sql = `INSERT INTO wingo SET 
         period = ?,
