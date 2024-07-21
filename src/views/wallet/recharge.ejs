@@ -17,6 +17,11 @@
     <link href="/css/wallet/chunk_2-1.css" rel="stylesheet" />
     <link href="/css/wallet/chunk_2-2.css" rel="stylesheet" />
     <link href="/css/wallet/chunk_2-3.css" rel="stylesheet" />
+    <style>
+        .d-none{
+            display: none !important;
+        }
+    </style>
     <link href="/css/wallet/recharge_styles.css" rel="stylesheet" />
     <link rel="shortcut icon" href="/images/bitbug_favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -88,7 +93,7 @@
 
                     <!-- Payment Methods Options -->
                     <div data-v-67caa467="" class="list c-row c-flex-warp m-t-10" id="payment_methods_options">
-                        <div data-v-67caa467="" class="item action" type="upi_gateway">
+                        <div data-v-67caa467="" class="item action d-none" type="upi_gateway">
                             <img data-v-67caa467="" width="20px" height="20px" src="/images/recharge_TRANSFER_red.webp"
                                 class="img">
                             <div data-v-67caa467="" class="name">UPI</div>
@@ -99,7 +104,7 @@
                             </div>
                         </div>
 
-                        <div data-v-67caa467="" class="item" type="wow_pay">
+                        <div data-v-67caa467="" class="item d-none" type="wow_pay">
                             <img data-v-67caa467="" width="20px" height="20px" src="/images/recharge_TRANSFER_red.webp"
                                 class="img">
                             <div data-v-67caa467="" class="name">Wow Pay</div>
@@ -121,7 +126,7 @@
                             </div>
                         </div>
 
-                        <div data-v-67caa467="" class="item" type="usdt_manual">
+                        <div data-v-67caa467="" class="item d-none" type="usdt_manual">
                             <img data-v-67caa467="" width="20px" height="20px" src="/images/recharge_TRANSFER_red.webp"
                                 class="img">
                             <div data-v-67caa467="" class="name">USDT Manual</div>
