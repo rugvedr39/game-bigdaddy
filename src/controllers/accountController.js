@@ -168,9 +168,10 @@ const register = async (req, res) => {
                         status: true
                     });
                 } else {
+                    await connection.execute('INSERT INTO point_list SET phone = ?', [username]);
                     return res.status(200).json({
-                        message: 'Registered IP address',
-                        status: false
+                        message: 'Register Sucess',
+                        status: true
                     });
                 }
             } else {
