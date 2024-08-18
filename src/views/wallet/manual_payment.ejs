@@ -9,6 +9,7 @@
         integrity="sha512-NQfB/bDaB8kaSXF8E77JjhHG5PM6XVRxvHzkZiwl3ddWCEPBa23T76MuWSwAJdMGJnmQqM0VeY9kFszsrBEFrQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
         </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 
 <body>
@@ -201,8 +202,8 @@
                     <%=Amount%>
                 </span> on
             </h2>
-            <img src="../../assets/png/upi.jpg" alt="" srcset="" width="100%">
             <button class="upi_display_content" id="copy_upi_id">
+                <div id="qrcode" style="margin-top: 20px;"></div>
                 <p>
                     <strong>UPI ID: </strong>
                     <span id="upi_id_field">
@@ -334,6 +335,20 @@
                 alertMessage("Something went Wrong!")
             }
         });
+
+    function generateQRCode(upiId) {
+        const qrcode = new QRCode(document.getElementById("qrcode"), {
+            text: `upi://pay?pa=${upiId}&pn=UPI Payment`,
+            width: 128,
+            height: 128,
+        });
+    }
+
+    // Extract UPI ID from the element and generate QR code
+    const upiIdElement = document.getElementById("upi_id_field");
+    const upiId = upiIdElement.innerText.trim();
+    generateQRCode(upiId);
+
     </script>
 </body>
 
